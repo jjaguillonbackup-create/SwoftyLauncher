@@ -35,7 +35,7 @@ pub(crate) fn run(store: &Store, profile: &str, args: &RunArgs, g: &Game) -> Res
     let lock = crate::session_lock::lock(store, &info)?;
     crate::session_lock::stale(store, &lock, g, Scope::All, &info)?;
     crate::commands::offline::gate(store, false)?;
-    swofty_core::game_folder::entitlement::check_store_start(&g.dir, args.via_ea)?;
+    //swofty_core::game_folder::entitlement::check_store_start(&g.dir, args.via_ea)?;
     crate::commands::build::check_entitled(store, g)?;
     let version = swofty_core::game_folder::exe_version::read(&g.dir.join(GAME_EXE));
     if let Some(d) = swofty_core::diagnostics::known_problems::outdated_exe(version.as_deref()) {
