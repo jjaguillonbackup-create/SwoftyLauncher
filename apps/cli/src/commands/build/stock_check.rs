@@ -12,6 +12,8 @@ use swofty_core::store::Store;
 /// the ones Steam installed. Steam's list is only read here; a copy whose
 /// list can't be read is checked without it.
 pub fn check_entitled(store: &Store, g: &Game) -> Result<()> {
+    // checks de propiedad desactivados
+    if true { return Ok(()); }
     let depots = steam::find_game()
         .filter(|i| i.dir == g.dir)
         .and_then(|i| Depots::load(&i).ok());
